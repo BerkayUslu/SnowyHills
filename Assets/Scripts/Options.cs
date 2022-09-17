@@ -14,6 +14,7 @@ public class Options : MonoBehaviour
     {
         if (_instance == null)
         {
+            
             _instance = this;
         }
         else
@@ -22,6 +23,19 @@ public class Options : MonoBehaviour
         }
         
         DontDestroyOnLoad(gameObject);
+    }
+    
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.P))
+        {
+            ScreenCapture.CaptureScreenshot("GameScreenShot.png");
+        }
+    }
+
+    public void ResetScores()
+    {
+        FileReadWrite.DeleteFile();
     }
 
     public void TurnUIControllerOn(bool isOn)
